@@ -1,0 +1,79 @@
+body {
+    background: linear-gradient(160deg, #9684bb 0%, #b3acc3 100%);
+    min-height: 100vh;
+    display: grid;
+    background-color: #c4afef !important;
+}
+
+section {
+
+    .cards {
+        width: 100%;
+        max-width: 550px;
+
+        .inputs {
+            border: 1px solid #af8df3;
+            font-family: "Barlow", sans-serif;
+            font-style: normal;
+        }
+
+        .create {
+            background-color: #af8df3;
+            border: #af8df3;
+        }
+
+
+
+        .tasks {
+            .task {
+                display: grid;
+                grid-template-columns: 4fr 1fr;
+            }
+
+            .todo-sq {
+                width: 35px;
+                height: 35px;
+                margin-left: 70px;
+                margin-top: 2px;
+                border: 3px solid #af8df3;
+                background-color: #fff;
+            }
+
+            .done-cir {
+                width: 35px;
+                height: 35px;
+                margin-left: 70px;
+                margin-top: 2px;
+                border-radius: 50%;
+                background-color: #af8df3 !important;
+            }
+
+            .name {
+                display: grid;
+                margin-top: -3px;
+                margin-bottom: -20px;
+                font-family: "Barlow", sans-serif;
+                font-style: normal;
+
+            }
+        }
+
+        .all {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            font-family: "Barlow", sans-serif;
+            font-style: normal;
+        }
+
+        .filter-btn {
+            background-color: #eee;
+            color: #000;
+        }
+
+        .filter-btn.active {
+            border-bottom: 2px solid #af8df3 !important;
+            color: #af8df3 !important;
+        }
+
+    }
+}
