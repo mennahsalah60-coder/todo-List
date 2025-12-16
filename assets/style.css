@@ -12,7 +12,7 @@ section {
         max-width: 550px;
 
         .inputs {
-            border: 1px solid #af8df3;
+            border: 2px solid #af8df3;
             font-family: "Barlow", sans-serif;
             font-style: normal;
         }
