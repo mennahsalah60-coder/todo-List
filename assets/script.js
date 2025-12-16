@@ -55,7 +55,7 @@ function addTask() {
         hours: update,
         minutes: times.getMinutes(),
         secounds: times.getSeconds(),
-        day: times.getDay(),
+        day: times.getDate(),
         month: (times.getMonth() + 1),
         year: times.getFullYear(),
     }
