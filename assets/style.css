@@ -22,8 +22,6 @@ section {
             border: #af8df3;
         }
 
-
-
         .tasks {
             .task {
                 display: grid;
@@ -65,15 +63,27 @@ section {
             font-style: normal;
         }
 
-        .filter-btn {
-            background-color: #eee;
-            color: #000;
+        .filter-indicator {
+            width: 100%;
         }
 
-        .filter-btn.active {
-            border-bottom: 2px solid #af8df3 !important;
-            color: #af8df3 !important;
+        .filter-indicator span {
+            width: calc(100% / 3);
+            height: 2px;
+            background-color: #af8df3;
+            color: #9684bb;
+            display: block;
+            transition: margin-left 0.3s ease;
+        }
+
+        .filter-indicator span.two {
+            margin-left: 33.33%;
+        }
+
+        .filter-indicator span.three {
+            margin-left: 66.66%;
         }
 
     }
+
 }

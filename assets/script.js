@@ -13,11 +13,11 @@ let tasksCountainer = document.querySelector(".tasks")
 function displaytasks(list = todoList) {
     tasksCountainer.innerHTML = ""
     if (todoList.length === 0) {
-        tasksCountainer.innerHTML = '<h5 class="text-danger p-2">No Tasks Yet....!</h5>'
+        tasksCountainer.innerHTML = '<h5 class="text-danger p-2 mt-3">No Tasks Yet....!</h5>'
     }
     list.forEach((task, index) => {
         tasksCountainer.innerHTML += `
-        <div class="mb-3">
+        <div class="mb-3 mt-3">
             <div class="task all-tasks shadow-sm bg-body-tertiary rounded-0 border border-1 p-2">
                 <div class="name">
                     <p class="m-0">${task.name}</p>
@@ -39,22 +39,29 @@ displaytasks()
 
 // add task operation
 let addTaskInput = document.querySelector("input")
-const times = new Date()
-const hours = times.getHours()
-if (hours >= 12) {
-    update = `${hours - 12}`
-} else {
-    update = `0${hours}`
-}
+
 
 function addTask() {
+    const times = new Date()
+    const hours = times.getHours()
+    if (hours >= 12) {
+        update = `0${hours - 12}`
+    } else {
+        update = `${hours}`
+    }
+
+    if (hours >= 12) {
+        time = `PM`
+    } else {
+        time = `AM`
+    }
     let newTask = {
         id: Date.now(),
         name: addTaskInput.value,
         status: false,
         hours: update,
         minutes: times.getMinutes(),
-        secounds: times.getSeconds(),
+        secounds: times.getSeconds() + time,
         day: times.getDate(),
         month: (times.getMonth() + 1),
         year: times.getFullYear(),
@@ -65,10 +72,11 @@ function addTask() {
         return
     }
     p.innerHTML = ""
-
     todoList.push(newTask)
     tasksCountainer.innerHTML = ""
     addTaskInput.value = ""
+
+
     Swal.fire({
         position: "top-left",
         icon: "success",
@@ -104,35 +112,32 @@ function changeTaskStatus(selectedIndex) {
 const allBtn = document.querySelector(".al")
 const todoBtn = document.querySelector(".todo");
 const completedBtn = document.querySelector(".completed")
-const buttons = [todoBtn, completedBtn, allBtn];
+const indicator = document.querySelector(".filter-indicator span");
 
-function removeActive() {
-    buttons.forEach(btn => btn.classList.remove("active"));
+
+function removeIndicator() {
+    indicator.classList.remove("one", "two", "three");
 }
 
 todoBtn.onclick = () => {
-    removeActive();
-    todoBtn.classList.add("active");
-    const todoTasks = todoList.filter(task => !task.status);
-    displaytasks(todoTasks);
-
-    console.log(todoTasks);
+    removeIndicator();
+    indicator.classList.add("two");
+    const todoTask = todoList.filter(task => !task.status);
+    displaytasks(todoTask);
 };
 
 completedBtn.onclick = () => {
-    removeActive();
-    completedBtn.classList.add("active");
-    const completedTasks = todoList.filter(task => task.status)
-    displaytasks(completedTasks)
+    removeIndicator();
+    indicator.classList.add("three");
+
+    const completedTask = todoList.filter(task => task.status)
+    displaytasks(completedTask)
 }
 
 allBtn.onclick = () => {
-    removeActive();
-    allBtn.classList.add("active");
+    removeIndicator();
+    allBtn.classList.add("one");
     displaytasks(todoList)
 }
-
-
-
 
 // bom (localStorage) // dom
