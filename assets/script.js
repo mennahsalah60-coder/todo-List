@@ -78,7 +78,7 @@ function addTask() {
 
 
     Swal.fire({
-        position: "top-left",
+        position: "top-bottom",
         icon: "success",
         title: "Task Added Successfully",
         showConfirmButton: false,
