@@ -21,7 +21,7 @@ function displaytasks(list = todoList) {
             <div class="task all-tasks shadow-sm bg-body-tertiary rounded-0 border border-1 p-2">
                 <div class="name">
                     <p class="m-0">${task.name}</p>
-                    <p class="text-secondary">${task.hours}:${task.minutes}:${task.secounds}, ${task.day}/${task.month}/${task.year}</p>
+                    <p class="text-secondary">${zero}${task.hours}:${task.minutes}:${task.secounds}, ${task.day}/${task.month}/${task.year}</p>
                 </div>
                 ${task.status === true ? ` 
                 <button class="btn-img done-cir border-0 bg-light" onclick="changeTaskStatus(${index})">
@@ -49,6 +49,13 @@ function addTask() {
     } else {
         update = `0${hours}`
     }
+
+    if (update >= 9) {
+        zero = 0
+    } else {
+        zero = ""
+    }
+
     if (hours >= 12) {
         time = `PM`
     } else {
