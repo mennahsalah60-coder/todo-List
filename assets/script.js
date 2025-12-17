@@ -45,11 +45,10 @@ function addTask() {
     const times = new Date()
     const hours = times.getHours()
     if (hours >= 12) {
-        update = `0${hours - 12}`
+        update = `${hours - 12}`
     } else {
-        update = `${hours}`
+        update = `0${hours}`
     }
-
     if (hours >= 12) {
         time = `PM`
     } else {
